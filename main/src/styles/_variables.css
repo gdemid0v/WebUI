@@ -1,0 +1,48 @@
+:root {
+    /* Цвета */
+    --color-background: #F1F0F3;
+    --color-white: #FFF;
+    --color-border: #DDD;
+    --color-primary: #005EA5;
+    --color-text: #000;
+    --color-hover: #004a84;
+    --color-gray-light: #F8F8F8;
+    --color-gray-lighter: #EEE;
+    --color-text-secondary: #333;
+    --spacing-xl: 30px;
+    --spacing-xs: 8px;
+    --button-border-radius: 4px;
+    --transition-default: all 0.2s ease;
+    
+    /* Размеры */
+    --menu-width: 180px;
+    --content-padding: 15px;
+    --logo-margin: 25px 20px;
+    --input-height: 28px;
+    
+    /* Отступы */
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 25px;
+    
+    /* Тени */
+    --shadow-primary: 0 0 3px rgba(0, 94, 165, 0.3);
+    
+    /* Шрифты */
+    --font-primary: Arial, sans-serif;
+    --text-lg: 16px;
+    --text-md: 14px;
+    --text-sm: 13px;
+    
+    /* Радиусы */
+    --border-radius: 3px;
+    
+    /* Размеры элементов */
+    --logo-width: 140px;
+    --logo-height: 62px;
+    --nav-button-height: 40px;
+    --ip-input-width: 50px;
+    
+    /* Z-indexes */
+    --z-index-menu: 1000;
+}

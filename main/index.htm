@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Устройство {name}</title>
+    <link rel="stylesheet" href="/src/styles/styles.css">
+</head>
+<body>
+    <aside class="menu">
+        <img class="logo" src="/src/assets/Logo2x.png" alt="Логотип">
+        <p class="device-title">Устройство <span class="device-name"><b>{name}</b></span></p>
+        <nav class="nav-buttons">
+            <ul>
+                <li><a href="#" class="active" data-section="information">Информация</a></li>
+                <li><a href="#" data-section="settings">Настройки</a></li>
+                <li><a href="#" data-section="services">Сервисы</a></li>
+                <li><a href="#" data-section="maintenance">Обслуживание</a></li>
+                <li><a href="#" data-section="security">Безопасность</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <main class="content">
+        <section class="info-section active" id="information">
+            <h1>Общая информация</h1>
+            
+            <div class="info-block">
+                <h2>Устройство</h2>
+                <table class="info-table">
+                    <tr>
+                        <td>Производитель</td>
+                        <td id="Manufacturer">-</td>
+                    </tr>
+                    <tr>
+                        <td>Модель</td>
+                        <td id="Model">-</td>
+                    </tr>
+                    <tr>
+                        <td>IP-адрес</td>
+                        <td id="IP-Address">-</td>
+                    </tr>
+                    <tr>
+                        <td>MAC-адрес</td>
+                        <td id="MAC-Address">-</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="info-block system-info">
+                <h2>Система</h2>
+                <table class="info-table">
+                    <tr>
+                        <td>Время с последней загрузки</td>
+                        <td id="STARTtime">-</td>
+                    </tr>
+                    <tr>
+                        <td>Запущен</td>
+                        <td id="UPtime">-</td>
+                    </tr>
+                    <tr>
+                        <td>Текущее время</td>
+                        <td id="Time">-</td>
+                    </tr>
+                    <tr>
+                        <td>Загрузка CPU</td>
+                        <td id="CPU">-</td>
+                    </tr>
+                    <tr>
+                        <td>Загрузка RAM</td>
+                        <td id="RAM">-</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="settings-section" id="settings">
+            <h1>Настройки</h1>
+            
+            <div class="info-block">
+                <h2>Настройки IP</h2>
+                <div class="ip-editor">
+                    <div class="setting-row">
+                        <span>IP-адрес:</span>
+                        <div class="ip-segment">
+                            <input type="text" maxlength="3" class="ip-input" id="ip1">
+                            <span>.</span>
+                            <input type="text" maxlength="3" class="ip-input" id="ip2">
+                            <span>.</span>
+                            <input type="text" maxlength="3" class="ip-input" id="ip3">
+                            <span>.</span>
+                            <input type="text" maxlength="3" class="ip-input" id="ip4">
+                        </div>
+                    </div>
+
+                    <div class="network-settings">
+                        <div class="setting-row">
+                            <span>Маска подсети:</span>
+                            <div class="ip-segment">
+                                <input type="text" maxlength="3" class="ip-input" id="mask1">
+                                <span>.</span>
+                                <input type="text" maxlength="3" class="ip-input" id="mask2">
+                                <span>.</span>
+                                <input type="text" maxlength="3" class="ip-input" id="mask3">
+                                <span>.</span>
+                                <input type="text" maxlength="3" class="ip-input" id="mask4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn-save" id="saveSettings">Сохранить</button>
+                        <button class="btn-cancel" id="cancelSettings">Отмена</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="settings-section"><h1>Сервисы (в разработке)</h1></section>
+        <section id="maintenance" class="settings-section"><h1>Обслуживание (в разработке)</h1></section>
+        <section id="security" class="settings-section"><h1>Безопасность (в разработке)</h1></section>
+    </main>
+</body>
+<script src="/app.js"></script>
+</html>
