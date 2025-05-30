@@ -9,13 +9,16 @@
     --color-gray-light: #F8F8F8;
     --color-gray-lighter: #EEE;
     --color-text-secondary: #333;
+    --color-success: #4CAF50;
     --spacing-xl: 30px;
     --spacing-xs: 8px;
     --button-border-radius: 4px;
     --transition-default: all 0.2s ease;
+    --table-hover: var(--color-gray-lighter);
+    --table-header-bg: var(--color-gray-light);
     
     /* Размеры */
-    --menu-width: 180px;
+    --menu-width: 200px;
     --content-padding: 15px;
     --logo-margin: 25px 20px;
     --input-height: 28px;

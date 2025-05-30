@@ -31,7 +31,7 @@ body {
     height: var(--logo-height);
     margin: var(--logo-margin);
     align-self: center;
-    object-fit: contain;
+    object-fit: contain; /* Добавляем для правильного отображения */
 }
 
 .device-title {
@@ -43,7 +43,14 @@ body {
 
 .device-name {
     font-weight: bold;
+    font-size: 13px;
+    display: inline-block;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
 }
+
 
 .nav-buttons ul {
     list-style: none;
@@ -211,3 +218,81 @@ body {
 .btn-cancel:hover {
     background: var(--color-gray-lighter);
 }
+
+.table-wrapper {
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    width: fit-content; /* Главное изменение */
+    margin: var(--spacing-md) 0;
+    overflow: hidden;
+    background: var(--color-white);
+}
+
+.config-table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin-top: var(--spacing-md);
+    margin-top: 0;
+}
+
+.config-table th,
+.config-table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.config-table th {
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: bold;
+    background-color: var(--color-gray-light);
+}
+
+.config-table tr {
+    font-size: var(--text-sm);
+}
+
+.config-table tr:hover {
+    background-color: var(--color-gray-lighter);
+}
+
+.group-item td {
+    border-bottom: none !important;
+    padding-bottom: 10px;
+}
+.config-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Убираем границу у последней строки группы */
+.group-item + .group-next {
+    border-top: none;
+}
+
+.status {
+    width: 80px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.status::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+    background-color: var(--color-border);
+}
+
+.status.active::before {
+    background-color: #4CAF50;
+}
+
+.value {
+    font-family: monospace;
+    color: var(--color-primary);
+}
+

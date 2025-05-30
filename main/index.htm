@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Устройство {name}</title>
+    <title></title>
     <link rel="stylesheet" href="/src/styles/styles.css">
 </head>
 <body>
@@ -14,7 +14,8 @@
             <ul>
                 <li><a href="#" class="active" data-section="information">Информация</a></li>
                 <li><a href="#" data-section="settings">Настройки</a></li>
-                <li><a href="#" data-section="services">Сервисы</a></li>
+                <li><a href="#" data-section="signal">DO/DI</a></li>
+                <li><a href="#" data-section="rele">Реле</a></li>
                 <li><a href="#" data-section="maintenance">Обслуживание</a></li>
                 <li><a href="#" data-section="security">Безопасность</a></li>
             </ul>
@@ -40,10 +41,6 @@
                         <td>IP-адрес</td>
                         <td id="IP-Address">-</td>
                     </tr>
-                    <tr>
-                        <td>MAC-адрес</td>
-                        <td id="MAC-Address">-</td>
-                    </tr>
                 </table>
             </div>
             
@@ -61,14 +58,6 @@
                     <tr>
                         <td>Текущее время</td>
                         <td id="Time">-</td>
-                    </tr>
-                    <tr>
-                        <td>Загрузка CPU</td>
-                        <td id="CPU">-</td>
-                    </tr>
-                    <tr>
-                        <td>Загрузка RAM</td>
-                        <td id="RAM">-</td>
                     </tr>
                 </table>
             </div>
@@ -115,7 +104,145 @@
                 </div>
             </div>
         </section>
-        <section id="services" class="settings-section"><h1>Сервисы (в разработке)</h1></section>
+        <section id="signal" class="settings-section">
+            <h1>DO/DI</h1>
+            <div class="info-block">
+                <h2>Цифровые сигналы</h2>
+                <div class="table-wrapper">
+                    <table class="config-table">
+                        <thead>
+                            <tr>
+                                <th>Концентратор</th>
+                                <th>Статус</th>
+                                <th>Значение</th>
+                            </tr>
+                        </thead>
+                        <tbody id="di-do-body">
+                            <tr class="group-item" data-key="DIGITAL1">
+                                <td>DIGITAL1</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="DIGDIR1">
+                                <td>DIGDIR1</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr class="group-item" data-key="DIGITAL2">
+                                <td>DIGITAL2</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="DIGDIR2">
+                                <td>DIGDIR2</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr class="group-item" data-key="DIGITAL3">
+                                <td>DIGITAL3</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="DIGDIR3">
+                                <td>DIGDIR3</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr class="group-item" data-key="DIGITAL4">
+                                <td>DIGITAL4</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="DIGDIR4">
+                                <td>DIGDIR4</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr class="group-item" data-key="DIGITAL5">
+                                <td>DIGITAL5</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="DIGDIR5">
+                                <td>DIGDIR5</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr class="group-item" data-key="DIGITAL6">
+                                <td>DIGITAL6</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="DIGDIR6">
+                                <td>DIGDIR6</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr class="group-item" data-key="DIGITAL7">
+                                <td>DIGITAL7</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="DIGDIR7">
+                                <td>DIGDIR7</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr class="group-item" data-key="DIGITAL8">
+                                <td>DIGITAL8</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="DIGDIR8">
+                                <td>DIGDIR8</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="rele" class="settings-section">
+            <h1>Реле</h1>
+            <div class="info-block">
+                <h2>Управление реле</h2>
+                <div class="table-wrapper">
+                    <table class="config-table">
+                        <thead>
+                            <tr>
+                                <th>Концентратор</th>
+                                <th>Статус</th>
+                                <th>Значение</th>
+                            </tr>
+                        </thead>
+                        <tbody id="relay-body">
+                            <tr data-key="RELAY1">
+                                <td>RELAY1</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="RELAY2">
+                                <td>RELAY2</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="RELAY3">
+                                <td>RELAY3</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                            <tr data-key="RELAY4">
+                                <td>RELAY4</td>
+                                <td class="status">-</td>
+                                <td class="value">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
         <section id="maintenance" class="settings-section"><h1>Обслуживание (в разработке)</h1></section>
         <section id="security" class="settings-section"><h1>Безопасность (в разработке)</h1></section>
     </main>
