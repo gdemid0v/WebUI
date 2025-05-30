@@ -1,25 +1,86 @@
-# WebUI
-Настройка веб-сервера Apache2 на "КРОНОС"
-1) Создал в /var/www/ папки html, scripts
-2) В папку html перенес сайт (папку main с проектом)
-3) Принял решение оставить штатную конфигурацию Apache в которой читается директория usr
+# Универсальная документация к веб-интерфейсу устройства
 
-n) Посмотрел в /etc/apache2/httpd.conf куда указаны настройки размещения
+## Введение
+Эта документация описывает установку и настройку веб-интерфейса для устройств на базе Linux, ориентированного в первую очередь на системы с BusyBox. Веб-интерфейс предоставляет удобный способ просмотра состояния устройства и настройки параметров, таких как IP-адрес.
 
-n) Создал в этих настройках по пути (/usr/htdocs/) каталог webui, в каталоге webui создал каталоги html, scripts, в каталоге html положил морду
+---
 
-4) Переношу соданные мной файлы в /usr/htdocs/webui
-5) В файле /etc/apache2/httpd.conf меняю DocumentRoot с DocumentRoot "/usr/htdocs" на DocumentRoot "/usr/htdocs/webui/html/main"
-6) В файле /etc/apache2/httpd.conf меняю Directory с <Directory "/usr/htdocs"> на <Directory "/usr/htdocs/webui/html/main">
-7) В файле /etc/apache2/httpd.conf меняю IfModule dir_module с:
-<IfModule dir_module>
-    DirectoryIndex index.html index.cgi
-</IfModule>
-на:
-<IfModule dir_module>
-    DirectoryIndex index.htm index.html index.cgi
-</IfModule>
+## Установка и настройка
 
-n) Дал права доступа пользователю daemon:
-chown -R daemon:daemon /usr/htdocs/webui
-chmod -R 755 /usr/htdocs/webui
+### Подготовка устройства
+- Убедитесь, что веб-сервер Apache (`httpd`) установлен. В системах BusyBox он часто предустановлен, в противном случае установите его в зависимости от вашей системы.
+
+### Размещение файлов
+- Найдите корневую директорию Apache (например, `/usr/htdocs` или `/var/www/html`).
+- Создайте директорию для веб-приложения, например `/usr/htdocs/webui`.
+- Внутри нее создайте поддиректории:
+  - `html/main` — для файлов фронтенда (`index.htm`, `app.js`, `.css`).
+  - `scripts` — для скриптов бэкенда (`*.sh`).
+- Скопируйте файлы в соответствующие директории.
+
+### Настройка Apache
+- Откройте файл конфигурации Apache (например, `/etc/httpd.conf`).
+- Укажите `DocumentRoot`, например:
+  ```
+  DocumentRoot /usr/htdocs/webui/html/main
+  ```
+- Настройте выполнение CGI-скриптов:
+  ```
+  ScriptAlias /cgi-bin/ /usr/htdocs/webui/scripts/
+  <Directory "/usr/htdocs/webui/scripts">
+      Options +ExecCGI
+      AddHandler cgi-script .sh
+      Require all granted
+  </Directory>
+  ```
+- Перезапустите Apache командой, например: `/usr/bin/httpd -k restart`.
+
+### Настройка прав доступа
+- Установите права доступа:
+  ```
+  chown -R daemon:daemon /usr/htdocs/webui && chmod -R 755 /usr/htdocs/webui
+  ```
+- Убедитесь, что скрипты исполняемы: `chmod +x /usr/htdocs/webui/scripts/*.sh`.
+
+### Проверка работы
+- Откройте браузер и перейдите по адресу устройства (например, `http://<IP-адрес>/`).
+- Проверьте загрузку интерфейса и отображение данных.
+
+---
+
+## Документация к коду
+
+### Фронтенд
+- `index.htm`: Основная HTML-структура с меню и секциями.
+- `app.js`: Логика интерфейса, запросы к API, обновление данных.
+- `.css`: Стилизация.
+
+### Бэкенд
+- `apply_network.sh`: Сохранение сетевых настроек через POST-запрос.
+- `data_api.sh`: Возвращает информацию об устройстве.
+- `di_do_api.sh`: Состояние цифровых входов/выходов.
+- `relay_api.sh`: Состояние реле.
+
+### Взаимодействие
+- Фронтенд использует GET-запросы к `/cgi-bin/<script_name>.sh`.
+- POST-запросы отправляются к `apply_network.sh`.
+- Данные обновляются каждые 5 секунд.
+
+---
+
+## Особенности и рекомендации
+- Учитывайте ограничения ресурсов (например, малый объем ОЗУ).
+- Используйте только доступные утилиты (например, `awk`, `sed`).
+- Проверяйте наличие файлов перед использованием:
+  ```bash
+  [ -f /path/to/file ] && echo "OK" || echo "Ошибка"
+  ```
+- Для отладки добавляйте логи:
+  ```bash
+  echo "$(date): Сообщение" >> /tmp/webui.log
+  ```
+
+---
+
+## Заключение
+Эта документация позволяет развернуть веб-интерфейс на устройствах с BusyBox и адаптировать его для других систем Linux с минимальными изменениями.
