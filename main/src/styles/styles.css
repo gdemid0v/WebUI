@@ -9,20 +9,22 @@
 }
 
 body {
+    display: flex;
     background-color: var(--color-background);
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 /* Menu styles */
 .menu {
     width: var(--menu-width);
-    height: 100vh;
     background: var(--color-white);
     border-left: 1px solid var(--color-border);
     border-right: 1px solid var(--color-border);
-    position: fixed;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     z-index: var(--z-index-menu);
 }
 
@@ -35,7 +37,8 @@ body {
 }
 
 .device-title {
-    font-size: var(--text-lg);
+    font-size: clamp(14px, 1.5vw, 16px);
+    padding: 0 10px;
     text-align: center;
     color: var(--color-text);
     margin-bottom: var(--spacing-md);
@@ -80,10 +83,9 @@ body {
 
 /* Main content styles */
 .content {
-    margin-left: var(--menu-width);
+    flex-grow: 1;
     padding: var(--content-padding);
-    height: calc(100vh - 30px);
-    width: calc(100% - var(--menu-width));
+    min-width: 0; /* Фикс для переполнения */
 }
 
 /* Sections common styles */
@@ -91,8 +93,9 @@ body {
     display: none;
     background: var(--color-white);
     border: 1px solid var(--color-border);
-    height: calc(100vh - 30px);
     padding: var(--content-padding);
+    width: 100%;
+    min-height: 100%;
 }
 
 .content section.active {
@@ -108,8 +111,9 @@ body {
 
 /* Information section */
 .info-block {
-    margin-left: 85px;
+    margin-left: 5%;
     margin-top: var(--spacing-md);
+    max-width: 90%;
 }
 
 .info-block h2 {
@@ -119,8 +123,8 @@ body {
 }
 
 .info-table {
-    width: 450px;
-    border-collapse: collapse;
+    width: 100%;
+    max-width: 500px;
 }
 
 .info-table td {
@@ -150,11 +154,14 @@ body {
 .ip-segment {
     display: flex;
     align-items: center;
-    gap: 1px;
+    gap: 5px;
+    flex-wrap: wrap;
 }
 
 .ip-input {
-    width: var(--ip-input-width);
+        width: 3.5em;
+    min-width: 40px;
+
     height: var(--input-height);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
@@ -224,8 +231,9 @@ body {
     border-radius: var(--border-radius);
     width: fit-content; /* Главное изменение */
     margin: var(--spacing-md) 0;
-    overflow: hidden;
+    overflow-x: auto;
     background: var(--color-white);
+        max-width: 100%;
 }
 
 .config-table {
@@ -296,3 +304,50 @@ body {
     color: var(--color-primary);
 }
 
+.restart-status {
+    margin-left: var(--spacing-md);
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    font-size: var(--text-sm);
+    display: none;
+}
+
+.restart-status.error {
+    margin-left: var(--spacing-md);
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    font-size: var(--text-sm);
+    display: none;
+    color: red;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --menu-width: 180px;
+        --content-padding: 10px;
+    }
+    
+    .info-block {
+        margin-left: 3%;
+        margin-top: var(--spacing-sm);
+    }
+    
+    .ip-segment {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --menu-width: 150px;
+    }
+    
+    .logo {
+        max-width: 90%;
+    }
+    
+    .nav-buttons li {
+        margin-bottom: 5px;
+    }
+}

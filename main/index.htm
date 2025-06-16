@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="/src/styles/styles.css">
+    <link rel="stylesheet" href="./src/styles/styles.css">
 </head>
 <body>
     <aside class="menu">
-        <img class="logo" src="/src/assets/Logo2x.png" alt="Логотип">
+        <img class="logo" src="./src/assets/Logo2x.png" alt="Логотип">
         <p class="device-title">Устройство <span class="device-name"><b>{name}</b></span></p>
         <nav class="nav-buttons">
             <ul>
@@ -113,7 +113,7 @@
                         <thead>
                             <tr>
                                 <th>Концентратор</th>
-                                <th>Статус</th>
+                                <th>Состояние</th>
                                 <th>Значение</th>
                             </tr>
                         </thead>
@@ -213,7 +213,7 @@
                         <thead>
                             <tr>
                                 <th>Концентратор</th>
-                                <th>Статус</th>
+                                <th>Состояние</th>
                                 <th>Значение</th>
                             </tr>
                         </thead>
@@ -243,9 +243,18 @@
                 </div>
             </div>
         </section>
-        <section id="maintenance" class="settings-section"><h1>Обслуживание (в разработке)</h1></section>
+        <section id="maintenance" class="settings-section">
+            <h1>Обслуживание</h1>
+            <div class="info-block">
+                <h2>Перезагрузка устройства</h2>
+                <div class="form-actions">
+                    <button class="btn-save" id="restartButton">Перезагрузить</button>
+                    <div class="restart-status" id="restartStatus"></div>
+                </div>
+            </div>
+        </section>
         <section id="security" class="settings-section"><h1>Безопасность (в разработке)</h1></section>
     </main>
 </body>
-<script src="/app.js"></script>
+<script src="./app.js"></script>
 </html>

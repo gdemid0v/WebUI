@@ -108,7 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const valueCell = row.querySelector('.value');
                     statusCell.textContent = entry.value === '0' ? 'ON' : 'OFF';
                     statusCell.className = `status${entry.value === '0' ? ' active' : ''}`;
-                    valueCell.textContent = `${entry.path}: ${entry.value}`;
+                    // valueCell.textContent = `${entry.path}: ${entry.value}`;
+                    valueCell.textContent = entry.value;
                 }
             });
         } catch (error) {
@@ -131,7 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const valueCell = row.querySelector('.value');
                     statusCell.textContent = entry.value === '1' ? 'ON' : 'OFF';
                     statusCell.className = `status${entry.value === '1' ? ' active' : ''}`;
-                    valueCell.textContent = `${entry.path}: ${entry.value}`;
+                    // valueCell.textContent = `${entry.path}: ${entry.value}`;
+                    valueCell.textContent = entry.value;
                 }
             });
         } catch (error) {
@@ -250,14 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Функция конвертации маски в CIDR
-    const maskToCidr = (mask) => {
-        return mask.split('.')
-            .map(octet => (255 - parseInt(octet)).toString(2))
-            .join('')
-            .indexOf('1');
-    };
-
     // Обновлённая функция fillCurrentSettings
     const fillCurrentSettings = (ip, mask) => {
         if (!ip || !mask) return;
@@ -274,6 +268,29 @@ document.addEventListener('DOMContentLoaded', () => {
             if (element) element.value = part;
         });
     };
+
+    document.getElementById('restartButton')?.addEventListener('click', function() {
+        if (!confirm('Вы уверены, что хотите перезагрузить устройство?')) return;
+        
+        // Показываем статус
+        const statusElement = document.getElementById('restartStatus');
+        statusElement.textContent = "Запрос на перезагрузку отправлен...";
+        statusElement.className = "restart-status";
+        statusElement.style.display = 'block';
+        
+        // Отправляем запрос
+        fetch('/cgi-bin/restart.sh', { method: 'POST' })
+            .then(() => {
+                // Успешная отправка
+                statusElement.textContent = "Устройство перезагружается...";
+            })
+            .catch(error => {
+                // Обработка ошибки
+                console.error('Ошибка:', error);
+                statusElement.textContent = "Ошибка при отправке запроса: " + error.message;
+                statusElement.classList.add('error');
+            });
+    });
 
     const validateIP = (ip) => {
         return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip);

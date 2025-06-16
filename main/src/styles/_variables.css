@@ -18,7 +18,7 @@
     --table-header-bg: var(--color-gray-light);
     
     /* Размеры */
-    --menu-width: 200px;
+    --menu-width: 220px;
     --content-padding: 15px;
     --logo-margin: 25px 20px;
     --input-height: 28px;
@@ -44,8 +44,11 @@
     --logo-width: 140px;
     --logo-height: 62px;
     --nav-button-height: 40px;
-    --ip-input-width: 50px;
+    --ip-input-width: 55px;
     
     /* Z-indexes */
     --z-index-menu: 1000;
+
+    --breakpoint-tablet: 768px;
+    --breakpoint-mobile: 480px;
 }
